@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Selected Category-{{session['ch']}} <small>with price</small></h1>
+<h2>The number of book(s) available in the selected genre is/are-{{session['len1']}}</h2>
+    {% if session['len1']>0 %}
+        {% for k in range(session['len1']//10) %}
+            <div class="col btn ml-2 " style="box-shadow:2px 2px 4px grey;text-align:center;font-size:100%;width:350px;height:auto;">
+                {% for j in range(10) %}
+                    <ul class="list-group">
+                        {% if j==0 %}
+                            <li class="list-group-item list-group-item-light">
+                                {{'Name'}} : {{'Price'}}<br></li>
+                            <li class="list-group-item list-group-item-light">
+                                {{session['li'][j+(10*k)]}} : {{session['table1'][session['li'][j+(10*k)]]}}<br></li>
+                        {% else %}
+                            <li class="list-group-item list-group-item-light">
+                                {{session['li'][j+(10*k)]}} : {{session['table1'][session['li'][j+(10*k)]]}}<br></li>
+                        {% endif %}
+                    </ul>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        {% if (session['len1']-(10*(session['len1']//10)))>0 %}
+            <div class="col btn ml-2 " style="box-shadow:2px 2px 4px grey;text-align:center;font-size:100%;width:350px;height:auto;">
+                {% for j in range(session['len1']%10) %}
+                    <ul class="list-group">
+                        {% if j==0 %}
+                            <li class="list-group-item list-group-item-light">
+                                {{'Name'}} : {{'Price'}}<br></li>
+                            <li class="list-group-item list-group-item-light">
+                                {{session['li'][j+(10*(session['len1']//10))]}} : {{session['table1'][session['li'][j+(10*(session['len1']//10))]]}}<br></li>
+                        {% else %}
+                            <li class="list-group-item list-group-item-light">
+                                {{session['li'][j+(10*(session['len1']//10))]}} : {{session['table1'][session['li'][j+(10*(session['len1']//10))]]}}<br></li>
+                        {% endif %}
+                    </ul>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% else %}
+            <div class="col btn ml-2 " style="box-shadow:2px 2px 4px grey;text-align:center;font-size:100%;">
+                <p>Sorry there is no books available in the selected genre</p>
+            </div>
+    {% endif %}
+{% endblock content %}

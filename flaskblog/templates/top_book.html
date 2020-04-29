@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>TOP Books By Categories-<small>{{session['len1']}}</small></h1>
+        <div style="text-align:center">
+                <label title="Your Choice">Enter Your Choice</label>
+                <form method="Post">
+                        <input name="input_no" id="abc" style="border-radius:2px;" type="number" min="0" max="{{session['len1']}}" step="1" title="for choice" >
+                        <button type="submit" name="b" value="done">Go</button>
+                </form>
+        </div>
+        <br>
+        <div style="text-align:center">
+                {% for k in range(session['len1']//10 ) %}
+                        <div class="btn ml-2" style="box-shadow:2px 2px 4px grey;text-align:center;font-size:100%;width:250px;height:510px;">
+                                <ul class="list-group">
+                                        {% for i in range(10) %}
+                                                <li class="list-group-item list-group-item-light">{{(i+1)+(10*(k))}}. {{session['table1'][i+(10*(k))]}}<br></li>
+                                        {% endfor %}
+                                </ul>
+                        </div>
+                {% endfor %}
+         </div>
+{% endblock content %}
