@@ -1,4 +1,4 @@
-# Flask_Blog_Project
+# Top_Blog_Project
 Abstract
 The ‘TOP List Blog’ is a platform where different users can come see the various posts on the TOP’s (best) available for the given topic. 
 The user will also be able to post his own posts if he is a registered user. 
